@@ -8,7 +8,7 @@ print(dados.shape[0])#
 
 
 print("#########")
-print(dados.columns.sum())
+print(dados.columns)
 # como tratar a idade das crianças?????? esta tudo em anos
 
 #total_genero = dados.groupby('gender', dropna=False).size()
