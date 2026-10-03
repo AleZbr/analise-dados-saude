@@ -109,13 +109,32 @@ total_gn= dados.groupby(["stroke","gender"])["gender"].count()
 ## % por genero
 
 percentual_gn=(total_gn/total_avc * 100).round(2)
-print(percentual_gn)
+#print(percentual_gn)
 
 #0       Female    58.69
 #        Male      41.29
 #        Other      0.02
 #1       Female    56.63
 #        Male      43.37
+
+
+
+total_ev= dados.groupby(["stroke","ever_married"])["ever_married"].count()
+total_wt= dados.groupby(["stroke","work_type"])["work_type"].count()
+total_rt= dados.groupby(["stroke","Residence_type"])["Residence_type"].count()
+
+#print(total_ev)
+#print(total_wt)
+#print(total_rt)
+
+percentual_ev=(total_ev/total_avc * 100).round(2)
+percentual_wt=(total_wt/total_avc * 100).round(2)
+percentual_rt=(total_rt/total_avc * 100).round(2)
+print(percentual_ev)
+print(percentual_wt)
+print(percentual_rt)
+
+
 
 
 
