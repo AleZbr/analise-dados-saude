@@ -59,6 +59,41 @@ total_pc= dados.groupby("stroke")["heart_disease"].sum()
 # PC e HP em %
 percentual_hp = (total_hp / total_avc * 100).round(2)
 percentual_pc = (total_pc / total_avc * 100).round(2)
-print("% de pessoas com hipertensão", percentual_hp)
-print("% de pessoas com problemas cardiacos",percentual_pc)
+#print("% de pessoas com hipertensão", percentual_hp)
+#print("% de pessoas com problemas cardiacos",percentual_pc)
+
+
+# calculo fumantes e não fumantes status (fs)
+# aula 18 slide 10, agrupamento por categoria
+total_fs= dados.groupby(["stroke","smoking_status"])["smoking_status"].count()
+
+#print(total_fs)
+
+#      stroke  smoking_status 
+#      0-4861  Unknown            1497
+#              formerly smoked     815
+#              never smoked       1802
+#              smokes              747
+#      1-249   Unknown              47
+#              formerly smoked      70
+#              never smoked         90
+#              smokes               42
+
+# % de fumantes e não fumantes
+percentual_fs = (total_fs / total_avc * 100).round(2)
+#print(percentual_fs)
+
+#stroke  smoking_status 
+#0       Unknown            30.80    
+#        formerly smoked    16.77   
+#        never smoked       37.07
+#        smokes             15.37
+
+#1       Unknown            18.88
+#        formerly smoked    28.11
+#        never smoked       36.14
+#        smokes             16.87
+
+
+
 
