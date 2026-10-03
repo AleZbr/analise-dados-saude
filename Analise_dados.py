@@ -94,6 +94,29 @@ percentual_fs = (total_fs / total_avc * 100).round(2)
 #        never smoked       36.14
 #        smokes             16.87
 
+## total por genero
+
+total_gn= dados.groupby(["stroke","gender"])["gender"].count()
+#print(total_gn)
+
+#stroke  gender
+#0       Female    2853
+#        Male      2007
+#        Other        1
+#1       Female     141
+#        Male       108
+
+## % por genero
+
+percentual_gn=(total_gn/total_avc * 100).round(2)
+print(percentual_gn)
+
+#0       Female    58.69
+#        Male      41.29
+#        Other      0.02
+#1       Female    56.63
+#        Male      43.37
+
 
 
 
