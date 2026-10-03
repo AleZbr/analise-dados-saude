@@ -50,3 +50,4 @@ print(dados.isnull().sum())
 #cria o novo CSV sem dados nulos
 dados.to_csv("Atividade2_tratado.csv", index=False)
 """
+
