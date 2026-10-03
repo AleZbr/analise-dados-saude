@@ -43,7 +43,7 @@ mediana_idade_avc= dados.groupby("stroke")[["age","avg_glucose_level","bmi"]].me
 #0                432
 #1                 66
 
-total_hp= dados.groupby("stroke")[["hypertension"]].sum()
+total_hp= dados.groupby("stroke")["hypertension"].sum()
 #print(total_hp)
 
 
@@ -52,11 +52,13 @@ total_hp= dados.groupby("stroke")[["hypertension"]].sum()
 #stroke               
 #0                 229
 #1                  47
-total_pc= dados.groupby("stroke")[["heart_disease"]].sum()
+total_pc= dados.groupby("stroke")["heart_disease"].sum()
 #print(total_pc)
 
 
 # PC e HP em %
-
-
+percentual_hp = (total_hp / total_avc * 100).round(2)
+percentual_pc = (total_pc / total_avc * 100).round(2)
+print("% de pessoas com hipertensão", percentual_hp)
+print("% de pessoas com problemas cardiacos",percentual_pc)
 
