@@ -45,7 +45,7 @@ dados.loc[dados["age"] >= 60, "faixa_etaria"] = "60+"
 
 ##calcula o total por faixa etaria (valores absolutos)
 total_fe= dados.groupby(["stroke","faixa_etaria"] )["faixa_etaria"].count()
-print(total_fe)
+#print(total_fe)
 # stroke  faixa_etaria
 # 0       0-17             854
 #         18-39           1308
@@ -60,7 +60,7 @@ print(total_fe)
 
 ##calcula o total por faixa etaria (%)
 percentual_fe=(total_fe/total_avc * 100).round(2)
-print(percentual_fe)
+#print(percentual_fe)
 
 # Name: faixa_etaria, dtype: int64
 # stroke  faixa_etaria
@@ -269,4 +269,17 @@ percentual_hp_pc_avc = (total_hp_pc_avc/total_avc * 100).round(2)
 
 
 
-aaaaaa
+
+grafico = total_avc.plot(kind="bar", color=['blue','red'])
+plt.title("Pacientes SEM e COM AVC")
+plt.xlabel("AVC")
+plt.ylabel("Total")
+plt.xticks([0, 1], ["Sem AVC", "Com AVC"], rotation=0)
+grafico.bar_label(grafico.containers[0])
+plt.ylim(0, 6000)
+
+plt.tight_layout()
+plt.savefig("AVC.png")
+plt.show()
+
+
