@@ -24,9 +24,9 @@ print(idade_maxima_avc)
 
 #Informação idade COM e SEM AVC
 
-media_idade_avc= dados.groupby("stroke")[["age","avg_glucose_level","bmi"]].mean().round(2)
+media_dados_avc= dados.groupby("stroke")[["age","avg_glucose_level","bmi"]].mean().round(2)
 mediana_idade_avc= dados.groupby("stroke")[["age","avg_glucose_level","bmi"]].median().round(2)
-#print(media_idade_avc) 
+#print(media_dados_avc) 
 #print("\n") 
 #print(mediana_idade_avc)
 
@@ -269,17 +269,171 @@ percentual_hp_pc_avc = (total_hp_pc_avc/total_avc * 100).round(2)
 
 
 
-
+## grafico para pacientes COM e SEM AVC
 grafico = total_avc.plot(kind="bar", color=['blue','red'])
 plt.title("Pacientes SEM e COM AVC")
 plt.xlabel("AVC")
-plt.ylabel("Total")
+plt.ylabel("Total Pessoas")
 plt.xticks([0, 1], ["Sem AVC", "Com AVC"], rotation=0)
 grafico.bar_label(grafico.containers[0])
 plt.ylim(0, 6000)
 
 plt.tight_layout()
-plt.savefig("AVC.png")
-plt.show()
+plt.savefig("graficos/AVC.png")
+plt.close()
 
 
+# grafico para mostar as idades
+
+faixa_com_avc = total_fe.loc[1]
+grafico = faixa_com_avc.plot(kind="bar",color=['red','blue','green','yellow'])
+plt.title("Faixa etária dos pacientes com AVC")
+plt.xlabel("faixa etaria")
+plt.ylabel("Quantidade de pacientes")
+plt.xticks(rotation=0)
+grafico.bar_label(grafico.containers[0])
+plt.ylim(0, 200)
+
+plt.tight_layout()
+plt.savefig("graficos/Faixa_etaria.png")
+plt.close()
+
+
+
+
+faixa_com_avc = percentual_fe.loc[1]
+grafico = faixa_com_avc.plot(kind="bar",color=['red','blue','green','yellow'])
+plt.title("Faixa etária dos pacientes com AVC")
+plt.xlabel("faixa etaria")
+plt.ylabel("Percentual(%)")
+plt.xticks(rotation=0)
+grafico.bar_label(grafico.containers[0])
+plt.ylim(0, 100)
+
+plt.tight_layout()
+plt.savefig("graficos/Faixa_etaria_%.png")
+plt.close()
+
+## Grafico 2
+# Escolha uma das seguintes características e construa um gráfico que permita comparar os dois grupos:
+
+# hipertensão;
+# doença cardíaca;
+# nível médio de glicose;
+# IMC;
+# tabagismo.
+
+
+# HIPERTENSÃO
+grafico = percentual_hp.plot(kind="bar", color=['blue', 'red'])
+plt.title("Hipertensão em pacientes sem e com AVC")
+plt.xlabel("AVC")
+plt.ylabel("Percentual (%)")
+plt.xticks([0, 1], ["Sem AVC", "Com AVC"], rotation=0)
+grafico.bar_label(grafico.containers[0])
+plt.ylim(0, 35)
+
+plt.tight_layout()
+plt.savefig("graficos/Hipertensao.png")
+plt.close()
+
+
+# PROBLEMAS CARDÍACOS
+grafico = percentual_pc.plot(kind="bar", color=['blue', 'red'])
+plt.title("Problemas cardíacos em pacientes sem e com AVC")
+plt.xlabel("AVC")
+plt.ylabel("Percentual (%)")
+plt.xticks([0, 1], ["Sem AVC", "Com AVC"], rotation=0)
+grafico.bar_label(grafico.containers[0])
+plt.ylim(0, 25)
+
+plt.tight_layout()
+plt.savefig("graficos/Problema_cardiaco.png")
+plt.close()
+
+
+# NÍVEL MÉDIO DE GLICOSE
+glicose = media_dados_avc["avg_glucose_level"]
+grafico = glicose.plot(kind="bar", color=['blue', 'red'])
+plt.title("Nível médio de glicose em pacientes sem e com AVC")
+plt.xlabel("AVC")
+plt.ylabel("Nível médio de glicose")
+plt.xticks([0, 1], ["Sem AVC", "Com AVC"], rotation=0)
+grafico.bar_label(grafico.containers[0])
+plt.ylim(0, 150)
+plt.tight_layout()
+plt.savefig("graficos/Glicose.png")
+plt.close()
+
+
+# IMC
+imc = media_dados_avc["bmi"]
+grafico = imc.plot(kind="bar", color=['blue', 'red'])
+plt.title("IMC médio em pacientes sem e com AVC")
+plt.xlabel("AVC")
+plt.ylabel("IMC médio")
+plt.xticks([0, 1], ["Sem AVC", "Com AVC"], rotation=0)
+grafico.bar_label(grafico.containers[0])
+plt.ylim(0, 40)
+plt.tight_layout()
+plt.savefig("graficos/IMC.png")
+plt.close()
+
+
+# TABAGISMO
+tabagismo_sem_avc = percentual_fs.loc[0]
+tabagismo_com_avc = percentual_fs.loc[1]
+tabagismo = pd.DataFrame({
+    "Sem AVC": tabagismo_sem_avc,
+    "Com AVC": tabagismo_com_avc
+})
+grafico = tabagismo.plot(kind="bar", color=['blue', 'red'])
+plt.title("Tabagismo em pacientes sem e com AVC")
+plt.xlabel("Situação de tabagismo")
+plt.ylabel("Percentual (%)")
+plt.xticks(rotation=0)
+grafico.bar_label(grafico.containers[0])
+grafico.bar_label(grafico.containers[1])
+plt.ylim(0, 45)
+
+plt.tight_layout()
+plt.savefig("graficos/Tabagismo.png")
+plt.close()
+
+## Grafico 3 - Estado civil(ever marrief)
+
+#valor absoluto
+estado_civil_total = pd.DataFrame({
+    "Sem AVC": total_ev.loc[0],
+    "Com AVC": total_ev.loc[1]
+})
+grafico = estado_civil_total.plot(kind="bar", color=["blue", "red"])
+plt.title("Estado civil dos pacientes com e sem AVC")
+plt.xlabel("Estado civil")
+plt.ylabel("Quantidade de pacientes")
+plt.xticks([0, 1], ["Não casados", "Casados"], rotation=0)
+grafico.bar_label(grafico.containers[0])
+grafico.bar_label(grafico.containers[1])
+plt.ylim(0, 3500)
+
+plt.tight_layout()
+plt.savefig("graficos/Estado_civil_total.png")
+plt.close()
+
+# %
+estado_civil_percentual = pd.DataFrame({
+    "Sem AVC": percentual_ev.loc[0],
+    "Com AVC": percentual_ev.loc[1]
+})
+grafico = estado_civil_percentual.plot(kind="bar", color=["blue", "red"])
+plt.title("Estado civil dos pacientes com e sem AVC")
+plt.xlabel("Estado civil")
+plt.ylabel("Percentual (%)")
+plt.xticks([0, 1], ["Não casados", "Casados"], rotation=0)
+grafico.bar_label(grafico.containers[0])
+grafico.bar_label(grafico.containers[1])
+plt.ylim(0, 100)
+
+plt.tight_layout()
+plt.savefig("graficos/Estado_civil_percentual.png")
+plt.close()
