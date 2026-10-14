@@ -75,7 +75,7 @@ O gráfico mostra a distribuição absoluta dos pacientes com AVC por faixa etá
 
 Esse resultado reforça a diferença observada na análise de idade: no conjunto analisado, os casos de AVC estão concentrados principalmente nas faixas etárias mais altas.
 
-> Inserir aqui a imagem `graficos/Faixa_etaria.png`.
+![Faixa etária dos pacientes com AVC](graficos/Faixa_etaria.png)
 
 ### Gráfico 2 — Hipertensão em pacientes com e sem AVC
 
@@ -85,7 +85,7 @@ A hipertensão foi escolhida para o segundo gráfico por apresentar uma diferen�
 
 A utilização de percentuais é importante porque os dois grupos possuem tamanhos muito diferentes: 4.861 pacientes sem AVC e 249 com AVC.
 
-> Inserir aqui a imagem `graficos/Hipertensao.png`.
+![Hipertensão em pacientes com e sem AVC](graficos/Hipertensao.png)
 
 ### Gráfico 3 — Estado civil dos pacientes com e sem AVC
 
@@ -95,7 +95,7 @@ Entre os pacientes sem AVC, 64,45% eram casados e 35,55% não eram casados. Entr
 
 Existe uma diferença considerável entre os grupos, mas ela não permite concluir que o estado civil tenha relação causal com o AVC. Uma possível influência é a idade, pois o grupo com AVC possui idade média significativamente maior e pessoas mais velhas também podem apresentar maior frequência de casamento.
 
-> Inserir aqui a imagem `graficos/Estado_civil_percentual.png`.
+![Estado civil dos pacientes com e sem AVC](graficos/Estado_civil_percentual.png)
 
 ## 5. Armazenamento e consultas com SQLite
 
